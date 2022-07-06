@@ -14,6 +14,10 @@ export default function SubNavbar({
 
   const toggleOpen = () => setOpen((isOpen) => setOpen(!isOpen))
 
+  const handleLogout = () => {
+    window.location.reload()
+  }
+
   return (
     <nav className="SubNavbar">
       <div className="content">
@@ -37,10 +41,14 @@ export default function SubNavbar({
 
             <div className="auth">
               {user?.email ? (
+                <>
                 <Link to="/orders">
                   <img src={person} alt="avatar" />
                   {user.email}
                 </Link>
+                
+                <button onClick={handleLogout}>Logout</button>
+                </>
               ) : (
                 <Link to="/login">
                   <img src={person} alt="avatar" />
